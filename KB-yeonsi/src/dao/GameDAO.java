@@ -1,7 +1,9 @@
 package dao;
 import java.util.List;
+
 import dto.AcademyEventDTO;
-import dto.AcademyOptionDTO;	
+import dto.AcademyOptionDTO;
+import dto.UserDTO;
 import exception.DMLException;
 import exception.SearchWrongException;
 

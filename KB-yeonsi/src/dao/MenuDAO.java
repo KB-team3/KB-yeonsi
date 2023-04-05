@@ -5,7 +5,7 @@ import dto.LikeDTO;
 
 public interface MenuDAO {
 
-	List<LikeDTO> viewRanking(String charName);
+	List<LikeDTO> viewRanking(int charName);
 	
 	
 	

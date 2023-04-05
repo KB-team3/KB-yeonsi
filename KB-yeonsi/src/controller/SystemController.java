@@ -12,7 +12,7 @@ import view.FailView;
 import view.SuccessView;
 
 public class SystemController {
-	public static SystemService systemService = SystemServiceImpl.getInstance();
+	private static SystemService systemService = SystemServiceImpl.getInstance();
 	
 	// 전체 조회
 	public static void selectAcademyEventAll() {

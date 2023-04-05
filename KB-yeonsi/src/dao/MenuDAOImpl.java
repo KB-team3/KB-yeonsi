@@ -23,7 +23,7 @@ public class MenuDAOImpl implements MenuDAO {
 	}
 
 	@Override
-	public List<LikeDTO> viewRanking(String charName) throws SearchWrongException {
+	public List<LikeDTO> viewRanking(int charName) throws SearchWrongException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -33,19 +33,19 @@ public class MenuDAOImpl implements MenuDAO {
 		List<LikeDTO> list = new ArrayList<>();
 
 		switch (charName) {
-		case "wooyeop":
+		case 1:
 			sql = "select * from likeability order by wooyeop desc";
 			break;
-		case "sangwoo":
+		case 2:
 			sql = "select * from likeability order by sangwoo desc";
 			break;
-		case "sunyeong":
+		case 3:
 			sql = "select * from likeability order by sunyeong desc";
 			break;
-		case "minji":
+		case 4:
 			sql = "select * from likeability order by minji desc";
 			break;
-		case "chaelim":
+		case 5:
 			sql = "select * from likeability order by chaelim desc";
 			break;
 		}

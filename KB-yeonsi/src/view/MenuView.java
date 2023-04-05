@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import controller.GameController;
 import controller.MenuController;
 import exception.RangeWrongException;
 

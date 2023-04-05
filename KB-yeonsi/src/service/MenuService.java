@@ -5,7 +5,7 @@ import java.util.List;
 import dto.LikeDTO;
 
 public interface MenuService {
-	List<LikeDTO> viewRanking(String charName);
+	List<LikeDTO> viewRanking(int charNum);
 	
 
 }

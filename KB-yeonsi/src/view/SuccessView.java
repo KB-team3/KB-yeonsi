@@ -3,6 +3,8 @@ package view;
 import java.util.List;
 
 import dto.AcademyEventDTO;
+import dto.LikeDTO;
+import dto.TalkEventDTO;
 
 
 public class SuccessView {

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.DBManager;
+import dto.AcademyEventDTO;
 import dto.AcademyOptionDTO;
 import dto.LikeDTO;
 import dto.UserDTO;
@@ -16,8 +17,6 @@ import exception.SearchWrongException;
 
 
 public class GameDAOImpl implements GameDAO{
-
-	public GameDAOImpl () {}
 
 	private static GameDAO instance = new GameDAOImpl();
 	
@@ -170,6 +169,16 @@ public class GameDAOImpl implements GameDAO{
 	    }
 	    return user;
 }
+	@Override
+	public AcademyEventDTO academyEventSelectByRandom(int eventId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public int academyUpdate(AcademyOptionDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 	
 }

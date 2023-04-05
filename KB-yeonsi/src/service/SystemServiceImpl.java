@@ -12,13 +12,13 @@ import exception.DMLException;
 import exception.SearchWrongException;
 
 public class SystemServiceImpl implements SystemService {
-	public static AcademyEventDAO academyEventDAO = AcademyEventDAOImpl.getInstance(); 
-	public static TalkEventDAO talkEventDAO = TalkEventDAOImpl.getInstance(); 
+	private static AcademyEventDAO academyEventDAO = AcademyEventDAOImpl.getInstance(); 
+	private static TalkEventDAO talkEventDAO = TalkEventDAOImpl.getInstance(); 
 	
-	public static SystemServiceImpl instance = new SystemServiceImpl();
+	private static SystemService instance = new SystemServiceImpl();
 	private SystemServiceImpl() {}
 	
-	public static SystemServiceImpl getInstance() {
+	public static SystemService getInstance() {
 		return instance;
 	}
 	

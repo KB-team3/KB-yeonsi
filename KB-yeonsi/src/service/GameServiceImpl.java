@@ -1,17 +1,17 @@
 package service;
 
 import java.util.List;
+
 import dao.GameDAO;
 import dao.GameDAOImpl;
-import dto.LikeDTO;
+import dto.AcademyEventDTO;
+import dto.AcademyOptionDTO;
+import dto.UserDTO;
 import exception.DMLException;
 import exception.SearchWrongException;
-import dto.AcademyOptionDTO;
 
 public class GameServiceImpl implements GameService {
 	private static GameService instance = new GameServiceImpl();
-	public GameServiceImpl () {}
-	
 	
 	private GameDAO gameDAO = GameDAOImpl.getInstance();
 	
@@ -39,7 +39,7 @@ public class GameServiceImpl implements GameService {
 	
 	@Override
 	public void foodUpdate(String userName, String selectCharacter, int foodCode) throws SearchWrongException {
-		GameDAO gameDAO = new GameDAOImpl();
+		GameDAO gameDAO = GameDAOImpl.getInstance();
 		int result = gameDAO.foodUpdate(userName, selectCharacter, foodCode);
 		
 		if(result == 0) throw new DMLException("수정되지 않았습니다.");
@@ -48,7 +48,7 @@ public class GameServiceImpl implements GameService {
 
 	@Override
 	    public void giftUpdate(String userName, String selectCharacter, int giftNum) throws DMLException {
-			GameDAO gameDAO = new GameDAOImpl();
+			GameDAO gameDAO = GameDAOImpl.getInstance();
 			int result = gameDAO.giftUpdate(userName, selectCharacter, giftNum);
 		if (result == 0) {
 		    throw new DMLException("선물 주기 오류 발생!");

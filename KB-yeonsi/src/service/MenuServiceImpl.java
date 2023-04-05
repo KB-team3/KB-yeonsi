@@ -20,7 +20,7 @@ public class MenuServiceImpl implements MenuService {
 	}
 
 	@Override
-	public List<LikeDTO> viewRanking(String charName) throws SearchWrongException{
+	public List<LikeDTO> viewRanking(int charName) throws SearchWrongException{
 		List<LikeDTO> rankingList = menuDAO.viewRanking(charName);
 		if(rankingList.size() == 0)
 			throw new SearchWrongException("랭킹이 존재하지 않습니다.");		
