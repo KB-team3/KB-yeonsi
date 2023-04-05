@@ -10,6 +10,8 @@ import java.util.List;
 import common.DBManager;
 import dto.AcademyEventDTO;
 import dto.AcademyOptionDTO;
+import exception.DMLException;
+import exception.SearchWrongException;
 
 public class AcademyEventDAOImpl implements AcademyEventDAO{
 
@@ -21,8 +23,11 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 		return instance;
 	}
 	
+	/**
+	 * 아카데미 이벤트 전체 검색
+	 */
 	@Override
-	public List<AcademyEventDTO> selectAcademyEventAll() {
+	public List<AcademyEventDTO> selectAcademyEventAll() throws SearchWrongException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -54,7 +59,10 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 		return academyEventList;
 	}
 	
-	private List<AcademyOptionDTO> selectAcademyOption(Connection con, int eventId){
+	/**
+	 * 아카데미 이벤트 옵션 조회
+	 */
+	private List<AcademyOptionDTO> selectAcademyOption (Connection con, int eventId) throws SearchWrongException{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<AcademyOptionDTO> academyOptionList = new ArrayList<>();
@@ -90,8 +98,11 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 		return academyOptionList;
 	}
 	
+	/**
+	 * 아카데미 이벤트 추가
+	 */
 	@Override
-	public int insertAcademyEvent(AcademyEventDTO dto) {
+	public int insertAcademyEvent(AcademyEventDTO dto) throws DMLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -102,11 +113,12 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getScript());
-			
+			result = ps.executeUpdate();
+			insertAcademyOption(con, dto);
 			con.commit();
 		} catch(SQLException e) {
 			e.printStackTrace();
-			// throw new 
+			throw new DMLException("이벤트 추가하는 데 예외 발생") ;
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
@@ -114,20 +126,82 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 		return result;
 	}
 	
-	private int insertAcademyOption(Connection con, AcademyOptionDTO dto) {
+	/**
+	 * 아카데미 옵션 추가
+	 */
+	private int insertAcademyOption(Connection con, AcademyEventDTO dto) throws DMLException {
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "insert into academy_option values (aca_op_seq.nextval, aca_ev_seq.currval, ?, ?, ?, ?)";
 		
-		return 0;
+		try {
+			List<AcademyOptionDTO> optionList = dto.getOptionList();
+			for (AcademyOptionDTO option : optionList) {
+				ps = con.prepareStatement(sql);
+				ps.setString(1, option.getSelName());
+				ps.setString(2, option.getCharacterName());
+				ps.setInt(3, option.getLikePoint());
+				ps.setString(4, option.getResultScript());
+				result = ps.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DMLException("이벤트의 선택지 추가하는 데 예외 발생") ;
+		} finally {
+			DBManager.releaseConnection(null, ps);
+		}
+		
+		return result;
 	}
 	
+	/**
+	 * 아카데미 이벤트 삭제
+	 */
 	@Override
-	public int updateAcademyEvent(AcademyEventDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
-	public int deleteAcademyEvent(int eventId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteAcademyEvent(int eventId) throws DMLException  {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "delete from academy_event where event_id = ?";
+		
+		try {
+			con = DBManager.getConnection();
+			con.setAutoCommit(false);
+			deleteAcademyOption(con, eventId);
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, eventId);
+			result = ps.executeUpdate();
+			con.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DMLException("이벤트 삭제하는 데 예외 발생") ;
+		} finally {
+			DBManager.releaseConnection(null, ps);
+		}
+		
+		return result;
 	}
 	
+	/**
+	 * 아카데미 옵션 삭제
+	 */
+	private int deleteAcademyOption(Connection con, int eventId) throws DMLException  {
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "delete from academy_option where event_id = ?";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, eventId);
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DMLException("이벤트의 선택지 삭제하는 데 예외 발생") ;
+		} finally {
+			DBManager.releaseConnection(null, ps);
+		}
+		
+		return result;
+	}
 }
