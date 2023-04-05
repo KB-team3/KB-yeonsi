@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.MenuController;
+import exception.RangeWrongException;
 
 
 public class MenuView {
@@ -24,6 +25,16 @@ public class MenuView {
 		System.out.println("랭킹을 확인하고 싶은 캐릭터를 입력하세요.");
 		System.out.println("1. 우엽 | 2. 상우 | 3. 선영 | 4. 민지 | 5. 채림");
 		int charNum = sc.nextInt();
+		
+		try {
+		if(charNum <1 || charNum >5) 
+			throw new RangeWrongException("1부터 5사이의 숫자를 입력해주세요.");
+		}
+		catch(RangeWrongException e)
+		{
+			e.printStackTrace();
+			viewRanking();
+		}
 		
 		MenuController.viewRanking(charNum);
 		
