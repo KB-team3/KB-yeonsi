@@ -93,6 +93,28 @@ public class GameDAOImpl implements GameDAO{
 	        }
 	        return result;
 	    }
+	
+	@Override
+	public int academyUpdate(AcademyOptionDTO dto) throws DMLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "update likeability set " + dto.getCharacterName() + " = " + 
+				dto.getCharacterName() + "+" + dto.getLikePoint();
+		System.out.println(sql);
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			
+			result = ps.executeUpdate();
+			
+		}catch(SQLException e) {
+			throw new DMLException("선택이 잘못되었습니다.");
+		}finally {
+			DBManager.releaseConnection(con, ps);
+		}
+		return result;
+	}
 
 	
 }
