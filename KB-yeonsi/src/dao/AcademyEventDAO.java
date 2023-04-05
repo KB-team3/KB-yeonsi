@@ -11,9 +11,6 @@ public interface AcademyEventDAO {
 	// 추가
 	int insertAcademyEvent(AcademyEventDTO dto);
 	
-	// 수정
-	int updateAcademyEvent(AcademyEventDTO dto);
-	
 	// 삭제
 	int deleteAcademyEvent(int eventId);
 }
