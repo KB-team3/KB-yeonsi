@@ -1,8 +1,8 @@
-package mvc.view;
+package view;
 
 import java.util.Scanner;
 
-import mvc.controller.MenuController;
+import controller.MenuController;
 
 
 public class MenuView {
