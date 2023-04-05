@@ -24,6 +24,17 @@ public class GameServiceImpl implements GameService {
 		List<AcademyOptionDTO> list = gameDAO.optionSelectByEventId(eventId);
 		return list;		
 	}
+	
+	@Override
+	public AcademyEventDTO academyEventSelectByRandom(int eventId) {
+		AcademyEventDTO dto = gameDAO.academyEventSelectByRandom(eventId);
+		return dto;
+	}
+	
+	@Override
+	public int academyUpdate(AcademyOptionDTO dto) throws DMLException {
+		return gameDAO.academyUpdate(dto);
+	}
 
 	
 	@Override
