@@ -10,6 +10,12 @@ public class AcademyEventDTO {
 	
 	public AcademyEventDTO() {}
 
+	public AcademyEventDTO(int eventId, String script) {
+		super();
+		this.eventId = eventId;
+		this.script = script;
+	}
+
 	public int getEventId() {
 		return eventId;
 	}
@@ -36,17 +42,18 @@ public class AcademyEventDTO {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("AcademyEventDTO [eventId=");
-		builder.append(eventId);
-		builder.append("\nscript\n:");
-		builder.append(script);
-		builder.append("\noptionList\n");
-		for (AcademyOptionDTO option : optionList) {
-			builder.append(option.getOptionId() + "." + option.getSelName()+" ");
-		}
-		builder.append("]");
-		return builder.toString();
+//		StringBuilder builder = new StringBuilder();
+//		builder.append("AcademyEventDTO [eventId=");
+//		builder.append(eventId);
+//		builder.append("\nscript");
+//		builder.append(script);
+//		builder.append("\noptionList");
+//		for (AcademyOptionDTO option : optionList) {
+//			builder.append(option.getOptionId() + "." + option.getSelName()+" ");
+//		}
+//		builder.append("]");
+//		return builder.toString();
+		return script;
 	}
 	
 }
