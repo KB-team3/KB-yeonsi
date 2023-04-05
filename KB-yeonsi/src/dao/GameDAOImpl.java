@@ -9,6 +9,10 @@ import java.util.List;
 
 import common.DBManager;
 import dto.AcademyOptionDTO;
+import dto.LikeDTO;
+import dto.UserDTO;
+import exception.DMLException;
+import exception.SearchWrongException;
 
 
 public class GameDAOImpl implements GameDAO{
@@ -46,6 +50,9 @@ public class GameDAOImpl implements GameDAO{
 		return list;
 	}
 	
+	/**
+	 * 함께 맛집에 가면 호감도가 올라가거나 내려가용 메뉴에 따라서
+	 */
 	@Override
 	public int foodUpdate(String userName, String selectCharacter, int foodCode) throws DMLException {
 		Connection con = null;
@@ -54,7 +61,7 @@ public class GameDAOImpl implements GameDAO{
 		String sql = "update likeability set " + selectCharacter + " = " + 
 				selectCharacter + " + (select " + selectCharacter + " from food where food_code = ?) "
 						+ "where user_name = ?";
-		System.out.println(sql);
+
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
@@ -78,7 +85,7 @@ public class GameDAOImpl implements GameDAO{
 	        PreparedStatement ps = null;
 	        int result = 0;
 	        String sql = "update likeability set " + selectCharacter + " = " + selectCharacter + " + (select " + selectCharacter + " from gift where gift_code = ?) where user_name = ?";
-	        System.out.println(sql);
+
 	        try {
 	            con = DBManager.getConnection();
 	            ps = con.prepareStatement(sql);
@@ -95,26 +102,74 @@ public class GameDAOImpl implements GameDAO{
 	    }
 	
 	@Override
-	public int academyUpdate(AcademyOptionDTO dto) throws DMLException {
-		Connection con = null;
-		PreparedStatement ps = null;
-		int result = 0;
-		String sql = "update likeability set " + dto.getCharacterName() + " = " + 
-				dto.getCharacterName() + "+" + dto.getLikePoint();
-		System.out.println(sql);
-		try {
-			con = DBManager.getConnection();
-			ps = con.prepareStatement(sql);
-			
-			result = ps.executeUpdate();
-			
-		}catch(SQLException e) {
-			throw new DMLException("선택이 잘못되었습니다.");
-		}finally {
-			DBManager.releaseConnection(con, ps);
-		}
-		return result;
-	}
+    public int userInsert(String userName) throws DMLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        String sql = "insert into users (user_name) values (?)";
+        try {
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1,  userName);
+            result = ps.executeUpdate();
+
+    } catch (Exception e) {
+        throw new DMLException("입력이 잘못되었습니다.");
+    } finally {
+        DBManager.releaseConnection(con, ps);
+    }
+    return result;    
+}
+	
+	@Override
+    public int likeAbilityInsert(String userName) throws DMLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        String sql = "insert into likeability (user_name) values (?)";
+        try {
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1,  userName);
+            result = ps.executeUpdate();
+
+    } catch (Exception e) {
+        throw new DMLException("입력이 잘못되었습니다.");
+    } finally {
+        DBManager.releaseConnection(con, ps);
+    }
+    return result;
+}
+	@Override
+    public UserDTO userGet(String userName) throws SearchWrongException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * "
+            + "from users u, likeability l "
+            + "where u.user_name = l.user_name and u.user_name = ?";
+	    UserDTO user =  new UserDTO();
+	    System.out.println(sql);
+	    try {
+	        con = DBManager.getConnection();
+	        ps = con.prepareStatement(sql);
+	        ps.setString(1,  userName);
+	        rs = ps.executeQuery();
+	        
+	        if(rs.next()) {
+	            user = new UserDTO(rs.getString(1), rs.getInt(2), rs.getInt(3));
+	            LikeDTO like = new LikeDTO(rs.getString(4), rs.getInt(5), rs.getInt(6),
+	                    rs.getInt(7), rs.getInt(8), rs.getInt(9));
+	            user.setLikeability(like);
+	        }
+	
+	    } catch (Exception e) {
+	        throw new SearchWrongException("유저 선택이 잘못되었습니다.");
+	    } finally {
+	        DBManager.releaseConnection(con, ps, rs);
+	    }
+	    return user;
+}
 
 	
 }
