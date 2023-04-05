@@ -1,11 +1,15 @@
 package dao;
 import java.util.List;
+import dto.AcademyEventDTO;
 import dto.AcademyOptionDTO;	
 import exception.DMLException;
 
 public interface GameDAO {
 
 	List<AcademyOptionDTO> optionSelectByEventId(int eventId);
+	AcademyEventDTO academyEventSelectByRandom(int eventId);
+	
+	int academyUpdate(AcademyOptionDTO dto);
 	
 	/**
 	 * @param
