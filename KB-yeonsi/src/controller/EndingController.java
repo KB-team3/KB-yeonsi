@@ -1,11 +1,11 @@
-package mvc.controller;
+package controller;
 
-import mvc.dto.LikeDTO;
-import mvc.exception.SearchWrongException;
-import mvc.service.EndingService;
-import mvc.service.EndingServiceImpl;
-import mvc.view.FailView;
-import mvc.view.SuccessView;
+import dto.LikeDTO;
+import exception.SearchWrongException;
+import service.EndingService;
+import service.EndingServiceImpl;
+import view.FailView;
+import view.SuccessView;
 
 public class EndingController {
 
