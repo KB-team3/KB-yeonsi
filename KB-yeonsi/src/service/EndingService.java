@@ -1,6 +1,6 @@
-package mvc.service;
+package service;
 
-import mvc.dto.LikeDTO;
+import dto.LikeDTO;
 
 public interface EndingService {
 	
