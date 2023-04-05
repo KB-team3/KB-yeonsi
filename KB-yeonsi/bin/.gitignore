@@ -1,5 +1,5 @@
-/dto/
 /service/
 /dao/
-/common/
-/jdbc/
+/controller/
+/test/
+/dto/
