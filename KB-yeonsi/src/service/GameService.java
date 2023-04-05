@@ -4,6 +4,7 @@ import java.util.List;
 import exception.DMLException;
 import exception.SearchWrongException;
 import dto.AcademyOptionDTO;
+import dto.UserDTO;
 
 public interface GameService {
 	
@@ -12,4 +13,10 @@ public interface GameService {
 	List<AcademyOptionDTO> optionSelectByEventId(int eventId);
 	AcademyEventDTO academyEventSelectByRandom(int eventId);
 	int academyUpdate(AcademyOptionDTO dto);
+	
+	void userInsert(String userName) throws DMLException;
+	void likeAbilityInsert(String userName) throws DMLException;
+	UserDTO userGet(String userName) throws SearchWrongException;
+	
+	
 }
