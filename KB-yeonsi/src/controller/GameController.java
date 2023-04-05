@@ -67,6 +67,10 @@ public class GameController {
     		service.giftUpdate(userName, selectCharacter, giftNum);
             System.out.println("선물로 당신의 마음 전송 성공! ><♡");
         } catch (DMLException e) {
+        	System.out.println(userName);
+
+        	System.out.println(giftNum);
+        	e.printStackTrace();
         	System.out.println("실패");
         }
     }
