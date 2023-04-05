@@ -1,13 +1,13 @@
-package mvc.dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import mvc.common.DBManager;
-import mvc.dto.LikeDTO;
-import mvc.exception.SearchWrongException;
+import common.DBManager;
+import dto.LikeDTO;
+import exception.SearchWrongException;
 
 public class EndingDAOImpl implements EndingDAO {
 
