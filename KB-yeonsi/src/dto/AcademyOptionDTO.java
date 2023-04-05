@@ -8,8 +8,7 @@ public class AcademyOptionDTO {
 	private int likePoint;
 	private String resultScript;
 	
-	
-	public AcademyOptionDTO() {}
+	public AcademyOptionDTO(){}
 
 	public AcademyOptionDTO(int optionId, int eventId, String selName, String characterName, int likePoint,
 			String resultScript) {
@@ -72,8 +71,20 @@ public class AcademyOptionDTO {
 
 	@Override
 	public String toString() {
-		return eventId + " " + selName + " " + resultScript;
-	}	
-	
-	
+		StringBuilder builder = new StringBuilder();
+		builder.append("AcademyOptionDTO [optionId=");
+		builder.append(optionId);
+		builder.append(", eventId=");
+		builder.append(eventId);
+		builder.append(", selName=");
+		builder.append(selName);
+		builder.append(", characterName=");
+		builder.append(characterName);
+		builder.append(", likePoint=");
+		builder.append(likePoint);
+		builder.append(", resultScript=");
+		builder.append(resultScript);
+		builder.append("]");
+		return builder.toString();
+	}
 }
