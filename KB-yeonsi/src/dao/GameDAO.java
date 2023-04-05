@@ -1,8 +1,11 @@
 package dao;
-
+import java.util.List;
+import dto.AcademyOptionDTO;	
 import exception.DMLException;
 
 public interface GameDAO {
+
+	List<AcademyOptionDTO> optionSelectByEventId(int eventId);
 	
 	/**
 	 * @param
