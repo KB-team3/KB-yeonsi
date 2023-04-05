@@ -1,8 +1,7 @@
-package mvc.dao;
+package dao;
 
 import java.util.List;
-
-import mvc.dto.LikeDTO;
+import dto.LikeDTO;
 
 public interface MenuDAO {
 
