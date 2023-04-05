@@ -7,16 +7,90 @@ import exception.RangeWrongException;
 
 
 public class MenuView {
-		static Scanner sc =new Scanner(System.in);
+	static Scanner sc =new Scanner(System.in);
+	static int date = 1;
 	
 	public MenuView() {
 		System.out.println("menuView");
 	}
 	
 	public static void menuChoice() {
-		viewRanking();
-		
+		while (date < 7) {
+			// 평일
+			if (date < 5) {
+				System.out.println("아카데미에서의 " + date + "일차 하루가 시작되었습니다!");
+				date++;
+				
+			}
+			
+			// 주말
+			else if (date < 7) {
+				System.out.println(date);
+				System.out.println("오늘은 주말입니다!");
+				System.out.println("뭘 할지 선택해볼까요? (⌐■_■)	");
+				System.out.println("1. 선물 주기");
+				System.out.println("2. 맛집 가기");
+				
+				try {
+					int menu = Integer.parseInt(sc.nextLine());
+					switch (menu) {
+						case 1:	// 선물주기
+							inputGiftUpdate();
+							date++;
+							break;
+							
+						case 2:	// 맛집가기
+							inputFoodUpdate();
+							date++;
+							break;
+					}
+				} catch (NumberFormatException e) {
+					System.out.println("숫자로만 선택하세요.");
+				}
+			}
+	} // while 끝
+		System.out.println("끝!!");
+		System.exit(0);
+	}
+	
+	public static void inputGiftUpdate() {
+		try {
+			System.out.println("누구에게 선물을 주고싶나요? (•ө•)♡");
+			System.out.println("1. 우엽 2. 상우 3. 선영 4.민지 5. 채림 (번호로 입력해주세요!)");
+			int targetNo = Integer.parseInt(sc.nextLine());
+			System.out.println("무엇을 주고 싶나요? ʕ•ﻌ•ʔ ♡" );
+			System.out.println("1. 향수 2. 티비 3. 신발 4. 케이크 (번호로 입력해주세요!)");
+			int giftNo = Integer.parseInt(sc.nextLine());
+			
+			String[] names = new String[] {"xo", "wooyeop", "sangwoo", "sunyeong", "minji", "chaelim"};
+			String target = names[targetNo];
+			
+			GameController.giftUpdate(MainApp.userName, target, giftNo);
+			
+		} catch (NumberFormatException var2) {
+            System.out.println("글번호는 숫자만 입력해주세요.");
 
+        }
+	}
+	
+	public static void inputFoodUpdate() {
+		try {
+			System.out.println("누구와 맛집을 가고싶나요? (•ө•)♡");
+			System.out.println("1. 우엽 2. 상우 3. 선영 4.민지 5. 채림 (번호로 입력해주세요!)");
+			int targetNo = Integer.parseInt(sc.nextLine());
+			System.out.println("무엇을 먹고 싶나요? ʕ•ﻌ•ʔ ♡ ");
+			System.out.println("1. 떡볶이 2. 피자 3. 카레 4.치킨 (번호로 입력해주세요!)");
+			int foodNo = Integer.parseInt(sc.nextLine());
+			
+			String[] names = new String[] {"xo", "wooyeop", "sangwoo", "sunyeong", "minji", "chaelim"};
+			String target = names[targetNo];
+			
+			GameController.foodUpdate(MainApp.userName, target, foodNo);
+			
+		} catch (NumberFormatException var2) {
+            System.out.println("글번호는 숫자만 입력해주세요.");
+
+        }
 	}
 	
 	public static void gameStart() {}
