@@ -1,13 +1,13 @@
-package mvc.controller;
+package controller;
 
 import java.util.List;
 
-import mvc.dto.LikeDTO;
-import mvc.exception.SearchWrongException;
-import mvc.service.MenuService;
-import mvc.service.MenuServiceImpl;
-import mvc.view.FailView;
-import mvc.view.SuccessView;
+import dto.LikeDTO;
+import exception.SearchWrongException;
+import service.MenuService;
+import service.MenuServiceImpl;
+import view.FailView;
+import view.SuccessView;
 
 public class MenuController {
 
