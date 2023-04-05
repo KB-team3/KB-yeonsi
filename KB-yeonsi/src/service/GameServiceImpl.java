@@ -47,12 +47,37 @@ public class GameServiceImpl implements GameService {
 	}
 
 	@Override
-    public void giftUpdate(String userName, String selectCharacter, int giftNum) throws DMLException {
-		GameDAO gameDAO = new GameDAOImpl();
-		int result = gameDAO.giftUpdate(userName, selectCharacter, giftNum);
+	    public void giftUpdate(String userName, String selectCharacter, int giftNum) throws DMLException {
+			GameDAO gameDAO = new GameDAOImpl();
+			int result = gameDAO.giftUpdate(userName, selectCharacter, giftNum);
+		if (result == 0) {
+		    throw new DMLException("선물 주기 오류 발생!");
+		}
+	    }
+	
+	@Override
+    public void userInsert(String userName) throws DMLException {
+        int result = gameDAO.userInsert(userName);
         if (result == 0) {
-            throw new DMLException("선물 주기 오류 발생!");
+            throw new DMLException("유저 생성 오류 발생!");
         }
+    }
+	
+	@Override
+    public void likeAbilityInsert(String userName) throws DMLException {
+        int result = gameDAO.likeAbilityInsert(userName);
+        if (result == 0) {
+            throw new DMLException("유저 생성 오류 발생!");
+        }
+    }
+	
+	@Override
+    public UserDTO userGet(String userName) throws SearchWrongException {
+        UserDTO result = gameDAO.userGet(userName);
+        if (result == null) {
+            throw new SearchWrongException("찾는 유저가 없습니다.");
+        }
+        return result;
     }
 	
 }
