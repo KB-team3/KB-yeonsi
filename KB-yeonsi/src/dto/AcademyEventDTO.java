@@ -39,9 +39,9 @@ public class AcademyEventDTO {
 		StringBuilder builder = new StringBuilder();
 		builder.append("AcademyEventDTO [eventId=");
 		builder.append(eventId);
-		builder.append("\nscript");
+		builder.append("\nscript\n:");
 		builder.append(script);
-		builder.append("\noptionList");
+		builder.append("\noptionList\n");
 		for (AcademyOptionDTO option : optionList) {
 			builder.append(option.getOptionId() + "." + option.getSelName()+" ");
 		}
