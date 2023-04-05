@@ -1,9 +1,9 @@
-package mvc.service;
+package service;
 
-import mvc.dao.EndingDAO;
-import mvc.dao.EndingDAOImpl;
-import mvc.dto.LikeDTO;
-import mvc.exception.SearchWrongException;
+import dao.EndingDAO;
+import dao.EndingDAOImpl;
+import dto.LikeDTO;
+import exception.SearchWrongException;
 
 public class EndingServiceImpl implements EndingService {
 
