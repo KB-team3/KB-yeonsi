@@ -10,6 +10,12 @@ public class AcademyEventDTO {
 	
 	public AcademyEventDTO() {}
 
+	public AcademyEventDTO(int eventId, String script) {
+		super();
+		this.eventId = eventId;
+		this.script = script;
+	}
+
 	public int getEventId() {
 		return eventId;
 	}

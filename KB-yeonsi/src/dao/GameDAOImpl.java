@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.DBManager;
+import dto.AcademyEventDTO;
 import dto.AcademyOptionDTO;
+import exception.DMLException;
+import exception.SearchWrongException;
 
 
 public class GameDAOImpl implements GameDAO{
-
-	public GameDAOImpl () {}
 
 	private static GameDAO instance = new GameDAOImpl();
 	
@@ -93,6 +94,29 @@ public class GameDAOImpl implements GameDAO{
 	        }
 	        return result;
 	    }
+	@Override
+	public AcademyEventDTO academyEventSelectByRandom(int eventId) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result = 0;
+		AcademyEventDTO dto = null;
+		String sql = "select * from academy_event where event_Id = ?";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, eventId);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				dto = new AcademyEventDTO(rs.getInt(1), rs.getString(2));
+			}
+		} catch(SQLException e) {
+				throw new SearchWrongException("오류");
+		} finally {
+			DBManager.releaseConnection(con, ps, rs);
+		}
+		return dto;
+	}
 
 	
 }

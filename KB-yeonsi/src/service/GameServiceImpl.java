@@ -6,12 +6,11 @@ import dao.GameDAOImpl;
 import dto.LikeDTO;
 import exception.DMLException;
 import exception.SearchWrongException;
+import dto.AcademyEventDTO;
 import dto.AcademyOptionDTO;
 
 public class GameServiceImpl implements GameService {
 	private static GameService instance = new GameServiceImpl();
-	public GameServiceImpl () {}
-	
 	
 	private GameDAO gameDAO = GameDAOImpl.getInstance();
 	
@@ -25,6 +24,11 @@ public class GameServiceImpl implements GameService {
 		return list;		
 	}
 
+	@Override
+	public AcademyEventDTO academyEventSelectByRandom(int eventId) {
+		AcademyEventDTO dto = gameDAO.academyEventSelectByRandom(eventId);
+		return dto;
+	}
 	
 	@Override
 	public void foodUpdate(String userName, String selectCharacter, int foodCode) throws SearchWrongException {
@@ -43,5 +47,4 @@ public class GameServiceImpl implements GameService {
             throw new DMLException("선물 주기 오류 발생!");
         }
     }
-	
 }

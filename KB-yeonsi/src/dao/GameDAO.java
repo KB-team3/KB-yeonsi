@@ -1,6 +1,8 @@
 package dao;
 import java.util.List;
-import dto.AcademyOptionDTO;	
+
+import dto.AcademyEventDTO;
+import dto.AcademyOptionDTO;
 import exception.DMLException;
 
 public interface GameDAO {
@@ -21,5 +23,7 @@ public interface GameDAO {
 	 * 성공하면 1, 실패하면 0
 	 * */
 	int giftUpdate(String userName, String selectCharacter, int giftCode) throws DMLException;
+	
+	AcademyEventDTO academyEventSelectByRandom(int eventId);
 	
 }
