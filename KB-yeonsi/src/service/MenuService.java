@@ -1,8 +1,8 @@
-package mvc.service;
+package service;
 
 import java.util.List;
 
-import mvc.dto.LikeDTO;
+import dto.LikeDTO;
 
 public interface MenuService {
 	List<LikeDTO> viewRanking(String charName);
