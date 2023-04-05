@@ -1,6 +1,6 @@
-package mvc.dao;
+package dao;
 
-import mvc.dto.LikeDTO;
+import dto.LikeDTO;
 
 public interface EndingDAO {
 
