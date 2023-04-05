@@ -1,9 +1,9 @@
-package mvc.view;
+package view;
 
 import java.util.Scanner;
 
-import mvc.controller.EndingController;
-import mvc.controller.MenuController;
+import controller.EndingController;
+import controller.MenuController;
 
 public class EndingView {
 	static Scanner sc =new Scanner(System.in);
