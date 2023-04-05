@@ -2,16 +2,21 @@ package dto;
 
 public class UserDTO {
 	private String userName;
-	private String date;
+	private int date;
 	private int fagibility;
 	private LikeDTO likeability;
 	
 	public UserDTO() {}
-	public UserDTO(String userName, String date, int fagibility, LikeDTO likeability) {
-		super();
+	public UserDTO(String userName) {
 		this.userName = userName;
+	}
+	public UserDTO(String userName, int date, int fagibility) {
+		this(userName);
 		this.date = date;
 		this.fagibility = fagibility;
+	}
+	public UserDTO(String userName, int date, int fagibility, LikeDTO likeability) {
+		this(userName, date, fagibility);
 		this.likeability = likeability;
 	}
 	public String getUserName() {
@@ -20,10 +25,10 @@ public class UserDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public String getDate() {
+	public int getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(int date) {
 		this.date = date;
 	}
 	public int getFagibility() {
