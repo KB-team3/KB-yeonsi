@@ -51,7 +51,7 @@ public class MenuView {
 		if(yn == 1) {
 			System.out.println("우엽이는 캔디를 좋아하구요 ...누구와도 금방 친해질 수 있는 친화력 '갑'이랍니다 ... ^^");
 			System.out.println("상우는 키가 매우 크고요... 밥을 엄청엄청 빨리 먹는답니다... ^^");
-			System.out.println("선영이는 ()༼ つ ◕_◕ ༽つ와 같은 (심지어 닮음) 귀여운 것들을 좋아한답니다... ^^");
+			System.out.println("선영이는 ༼ つ ◕_◕ ༽つ와 같은 (심지어 닮음) 귀여운 것들을 좋아한답니다... ^^");
 			System.out.println("민지는 카리스마 있고 시크해보이지만 제법 말도 많고 귀엽답니다... ^^");
 			System.out.println("채림이는 자주 배가 고프고 먹을 걸 매우 좋아한답니다... ^^");
 			
