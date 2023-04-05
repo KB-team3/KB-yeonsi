@@ -1,8 +1,7 @@
 package controller;
 
 import java.util.List;
-
-import dto.AcademyOptionDTO;
+import exception.DMLException;
 import service.GameService;
 import service.GameServiceImpl;
 
@@ -21,4 +20,26 @@ public class GameController {
 			
 		}	
 	}
+
+
+	public static void foodUpdate(String userName, String selectCharacter, int foodCode) {
+		try {
+			GameService service = new GameServiceImpl();
+			service.foodUpdate(userName, selectCharacter, foodCode);
+			System.out.println("성공");
+		}catch(DMLException e) {
+			e.printStackTrace();
+			System.out.println("실패");
+		}
+	}
+	
+	public static void giftUpdate(String userName, String selectCharacter, int giftNum) {
+        try {
+    		GameService service = new GameServiceImpl();
+    		service.giftUpdate(userName, selectCharacter, giftNum);
+            System.out.println("선물로 당신의 마음 전송 성공! ><♡");
+        } catch (DMLException e) {
+        	System.out.println("실패");
+        }
+    }
 }

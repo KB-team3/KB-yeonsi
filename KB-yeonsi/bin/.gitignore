@@ -1,5 +1,5 @@
-/service/
-/dao/
 /controller/
-/test/
+/dao/
+/service/
 /dto/
+/view/
