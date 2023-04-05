@@ -1,4 +1,4 @@
-package mvc.dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import mvc.common.DBManager;
-import mvc.dto.LikeDTO;
-import mvc.exception.SearchWrongException;
+import common.DBManager;
+import dto.LikeDTO;
+import exception.SearchWrongException;
 
 public class MenuDAOImpl implements MenuDAO {
 
