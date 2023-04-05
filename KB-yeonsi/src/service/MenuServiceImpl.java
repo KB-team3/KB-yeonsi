@@ -1,11 +1,10 @@
-package mvc.service;
+package service;
 
 import java.util.List;
-
-import mvc.dao.MenuDAO;
-import mvc.dao.MenuDAOImpl;
-import mvc.dto.LikeDTO;
-import mvc.exception.SearchWrongException;
+import dao.MenuDAO;
+import dao.MenuDAOImpl;
+import dto.LikeDTO;
+import exception.SearchWrongException;
 
 public class MenuServiceImpl implements MenuService {
 
