@@ -10,6 +10,7 @@ import mvc.view.SuccessView;
 public class EndingController {
 
 	static boolean flag = false;
+	static int limit = 50;
 	
 	private static EndingService endingService = EndingServiceImpl.getInstance();
 
@@ -17,26 +18,26 @@ public class EndingController {
 		try {
 			LikeDTO likeDto = endingService.checkEnding(userName);
 			
-			if (likeDto.getWooyeop() >= 50) {
+			if (likeDto.getWooyeop() >= limit) {
 				SuccessView.goodEnding("우엽");
 				flag = true;
 			}
-			if (likeDto.getSangwoo() >= 50) {
+			if (likeDto.getSangwoo() >= limit) {
 				SuccessView.goodEnding("상우");
 				flag = true;
 			}
 			
-			if (likeDto.getSunyeong() >= 50) {
+			if (likeDto.getSunyeong() >= limit) {
 				SuccessView.goodEnding("선영");
 				flag = true;
 			}
 			
-			if (likeDto.getMinji() >= 50) {
+			if (likeDto.getMinji() >= limit) {
 				SuccessView.goodEnding("민지");
 				flag = true;
 			}
 			
-			if (likeDto.getChaelim() >= 50) {
+			if (likeDto.getChaelim() >= limit) {
 				SuccessView.goodEnding("채림");
 				flag = true;
 			}
