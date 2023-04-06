@@ -14,6 +14,10 @@ public class GameView {
 		menuChoice();
 	}
 	
+	/**
+	 * @author 신선영+a
+	 * 일주일간의 이벤트 관리 (평일과 주말 이벤트 구분하여 발생)
+	 */
 	public static void menuChoice() {
 		while (date < 8) {
 			// 평일
