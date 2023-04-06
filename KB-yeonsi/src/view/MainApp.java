@@ -5,7 +5,7 @@ import java.util.Scanner;
 import controller.GameController;
 
 public class MainApp {
-	static String userName = "";
+	public static String userName = "";
 	public static void main(String[] args) {
 		Scanner sc =new Scanner(System.in);
 		// MenuView.menuChoice();
@@ -16,9 +16,9 @@ public class MainApp {
 		System.out.println("두근두근 당신의 짝꿍을 찾아볼까요?!");
 		System.out.println("당신의 이름을 입력해주세요!");
 		
-		userName = sc.nextLine();
+		userName = sc.next();
 		
-		
+		if (userName.equals("system")) new SystemView();
 	
 		// ~~ 유저 인서트 ~~
 		
@@ -27,7 +27,7 @@ public class MainApp {
 		System.out.println("안녕하세요, " + userName + "!");
 		
 		// ~~ 유저 입력한 후
-		MenuView.menuChoice();
+		new MenuView();
 		
 	}
 

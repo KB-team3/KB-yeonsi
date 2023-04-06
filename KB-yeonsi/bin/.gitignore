@@ -1,5 +1,6 @@
 /controller/
-/view/
-/service/
 /dao/
 /common/
+/view/
+/dto/
+/service/

@@ -39,16 +39,14 @@ public class GameServiceImpl implements GameService {
 	
 	@Override
 	public void foodUpdate(String userName, String selectCharacter, int foodCode) throws SearchWrongException {
-		GameDAO gameDAO = GameDAOImpl.getInstance();
 		int result = gameDAO.foodUpdate(userName, selectCharacter, foodCode);
 		
-		if(result == 0) throw new DMLException("수정되지 않았습니다.");
+		if(result == 0) throw new DMLException("식사 오류 발생!");
 		
 	}
 
 	@Override
 	    public void giftUpdate(String userName, String selectCharacter, int giftNum) throws DMLException {
-			GameDAO gameDAO = GameDAOImpl.getInstance();
 			int result = gameDAO.giftUpdate(userName, selectCharacter, giftNum);
 		if (result == 0) {
 		    throw new DMLException("선물 주기 오류 발생!");

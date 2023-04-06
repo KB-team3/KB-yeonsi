@@ -3,6 +3,13 @@ package dto;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author 길민지
+ * 평일에 아카데미에서 일어나는 이벤트에 대한 DTO
+ * PK인 아이디와 출력될 스크립트, 가지고 있는 선택지에 대한 정보가 담겨있다.
+ *
+ */
 public class AcademyEventDTO {
 	private int eventId;
 	private String script;

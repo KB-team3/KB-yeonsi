@@ -47,7 +47,6 @@ public class EndingDAOImpl implements EndingDAO {
 				likeDto.setChaelim(rs.getInt("chaelim"));
 
 			}
-			System.out.println(likeDto);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new SearchWrongException("엔딩 조회에 문제가 발생하였습니다.");
