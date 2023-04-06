@@ -1,9 +1,7 @@
 package view;
 
 import controller.GameController;
-
 import java.util.Scanner;
-
 import controller.MenuController;
 import controller.SystemController;
 
@@ -63,6 +61,10 @@ public class GameView {
 		System.exit(0);
 	}
 	
+	/**
+	 * @author 신선영
+	 * 주말 이벤트 - 선물 주기 발생 시 선물을 줄 대상과 선물을 선택하여 연결
+	 */
 	public static void inputGiftUpdate() {
 		try {
 			System.out.println("누구에게 선물을 주고싶나요? (•ө•)♡");
@@ -83,6 +85,10 @@ public class GameView {
         }
 	}
 	
+	/**
+	 * @author 신선영
+	 * 주말 이벤트 - 맛집 가기 발생 시 함께 갈 대상과 메뉴를 선택하여 연결
+	 */
 	public static void inputFoodUpdate() {
 		try {
 			System.out.println("누구와 맛집을 가고싶나요? (•ө•)♡");
