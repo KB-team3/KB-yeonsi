@@ -81,7 +81,7 @@ public class GameController {
 
 	/**
 	 * @author 윤상우
-	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (gift 테이블)
+	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (food 테이블)
 	 * 모든 과정이 성공하면 successView, 실패하면 failView 출력
 	 * @param userName
 	 * @param selectCharacter
@@ -95,6 +95,15 @@ public class GameController {
 			FailView.errorMessage("실패 ㅠㅠ");
 		}
 	}
+	
+	/**
+	 * @author 신선영
+	 * 사용자가 선택한 선물에 해당하는 캐릭터 호감도 업데이트 (gift 테이블)
+	 * 모든 과정이 성공하면 successView, 실패하면 failView에 메시지 출력 출력
+	 * @param userName
+	 * @param selectCharacter
+	 * @param giftNum
+	 */
 	public static void giftUpdate(String userName, String selectCharacter, int giftNum) {
         try {
     		gameService.giftUpdate(userName, selectCharacter, giftNum);
