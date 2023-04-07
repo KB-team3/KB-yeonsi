@@ -1,9 +1,3 @@
 /controller/
-/dao/
-/common/
-/view/
-/dto/
 /service/
-/schema/
-/resources/
-/docAPI/
+/view/

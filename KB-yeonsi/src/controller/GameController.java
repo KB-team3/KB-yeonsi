@@ -96,10 +96,6 @@ public class GameController {
 			FailView.errorMessage("실패 ㅠㅠ");
 		}
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> 9a7b2f635fc32b912057121f35ca6baaa7c3773a
 	/**
 	 * @author 신선영
 	 * 사용자가 선택한 선물에 해당하는 캐릭터 호감도 업데이트 (gift 테이블)
