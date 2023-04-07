@@ -18,7 +18,7 @@ public class MenuController {
 	 * 번호에 해당하는 캐릭터의 호감도 랭킹 조회하기
 	 * 조회한 결과 list가 비어있지 않으면 list와 그 때의 사용자 이름을 인수로 보낸다.
 	 * 
-	 * @param 조회한 list, 캐릭터이름
+	 * @param : 조회한 list, 캐릭터이름
 	 * 
 	 * */
 	public static void viewRanking(int charNum) {

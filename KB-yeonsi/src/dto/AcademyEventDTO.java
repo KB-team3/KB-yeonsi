@@ -49,17 +49,6 @@ public class AcademyEventDTO {
 
 	@Override
 	public String toString() {
-//		StringBuilder builder = new StringBuilder();
-//		builder.append("AcademyEventDTO [eventId=");
-//		builder.append(eventId);
-//		builder.append("\nscript");
-//		builder.append(script);
-//		builder.append("\noptionList");
-//		for (AcademyOptionDTO option : optionList) {
-//			builder.append(option.getOptionId() + "." + option.getSelName()+" ");
-//		}
-//		builder.append("]");
-//		return builder.toString();
 		return script;
 	}
 	

@@ -53,6 +53,7 @@ public class GameController {
 	public static void academyEventSelectByRandom() {
 		SystemService s = SystemServiceImpl.getInstance();
 		int size = s.selectAcademyEventAll().size();
+
         int ran = (int)(Math.random() * size) + 1;
         while(!checkValid(ran)) {
             ran = (int)(Math.random() * size) + 1;
@@ -95,6 +96,14 @@ public class GameController {
 			FailView.errorMessage("실패 ㅠㅠ");
 		}
 	}
+	/**
+	 * @author 신선영
+	 * 사용자가 선택한 선물에 해당하는 캐릭터 호감도 업데이트 (gift 테이블)
+	 * 모든 과정이 성공하면 successView, 실패하면 failView에 메시지 출력 출력
+	 * @param userName
+	 * @param selectCharacter
+	 * @param giftNum
+	 */
 	public static void giftUpdate(String userName, String selectCharacter, int giftNum) {
         try {
     		gameService.giftUpdate(userName, selectCharacter, giftNum);
@@ -128,7 +137,7 @@ public class GameController {
     public static void likeAbilityInsert(String userName) {
         try {
             gameService.likeAbilityInsert(userName);
-            SuccessView.messagePrint("호감도 설정이 성공하였습니다.");
+            //SuccessView.messagePrint("호감도 설정이 성공하였습니다.");
         } catch (DMLException e) {
         	FailView.errorMessage("실패 ㅠㅠ");
         }

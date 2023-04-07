@@ -51,8 +51,10 @@ public interface GameDAO {
 	int foodUpdate(String userName, String selectCharacter, int foodCode) throws DMLException;
 	
 	/**
+	 * @author 신선영
+	 * 사용자가 선택한 선물 코드에 해당하는 캐릭터 호감도 업데이트 (gift 테이블 참고, likeability 테이블 내 호감도 수정)
 	 * @param
-	 * 사용자이름, 선택한 캐릭터, 선택한 giftCode
+	 * 사용자 이름, 선택한 캐릭터, 선택한 giftCode
 	 * @return
 	 * 성공하면 1, 실패하면 0
 	 * @throws DMLEception

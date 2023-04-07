@@ -38,7 +38,14 @@ public interface GameService {
 	 * @throws DMLException
 	 */
 	void foodUpdate(String userName, String selectCharacter, int foodCode) throws DMLException;
-	
+	/**
+	 * @author 신선영
+	 * 사용자가 선택한 선물에 해당하는 캐릭터 호감도 업데이트 (gift 테이블 참고, likeablility 테이블 업데이트)
+	 * @param userName
+	 * @param selectCharacter
+	 * @param foodCode
+	 * @throws DMLException
+	 */
 	void giftUpdate(String userName, String selectCharacter, int giftNum) throws DMLException;
 	/**
 	 * @author 윤상우

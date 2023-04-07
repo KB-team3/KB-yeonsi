@@ -61,6 +61,8 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 	
 	/**
 	 * 아카데미 이벤트 옵션 조회
+	 * @param:
+	 * @return :
 	 */
 	private List<AcademyOptionDTO> selectAcademyOption (Connection con, int eventId) throws SearchWrongException{
 		PreparedStatement ps = null;
