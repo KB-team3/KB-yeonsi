@@ -41,7 +41,7 @@ public interface GameDAO {
 	
 	/**
 	 * @author 윤상우
-	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (gift 테이블)
+	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (food 테이블)
 	 * @param
 	 * 사용자이름, 선택한 캐릭터, 선택한 foodCode 
 	 * @return

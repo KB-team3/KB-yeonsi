@@ -15,11 +15,13 @@ public class MainApp {
 		
 		// 유저 이름 입력 받음
 		userName = sc.next();
-		
 		if (userName.equals("system")) new SystemView();
 	
 		// 유저 이름 입력 받은 후 DB에 user, 연관된 likeability insert
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 9a7b2f635fc32b912057121f35ca6baaa7c3773a
 		GameController.userInsert(MainApp.userName);
 		GameController.likeAbilityInsert(userName);
 		System.out.println("안녕하세요, " + userName + "!");

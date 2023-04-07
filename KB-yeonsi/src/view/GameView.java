@@ -1,9 +1,7 @@
 package view;
 
 import controller.GameController;
-
 import java.util.Scanner;
-
 import controller.MenuController;
 import controller.SystemController;
 

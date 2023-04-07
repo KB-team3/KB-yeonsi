@@ -9,9 +9,6 @@ import exception.DMLException;
 import exception.SearchWrongException;
 
 public interface GameService {
-	
-	
-	
 	/**
 	 * 작성자: 이우엽
 	 * Academy Event(평일 이벤트) ID로 해당 선택지 모두 가져오기
@@ -31,13 +28,17 @@ public interface GameService {
 	int academyUpdate(AcademyOptionDTO dto);
 	/**
 	 * @author 윤상우
-	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (gift 테이블)
+	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (food 테이블)
 	 * @param userName
 	 * @param selectCharacter
 	 * @param foodCode
 	 * @throws DMLException
 	 */
 	void foodUpdate(String userName, String selectCharacter, int foodCode) throws DMLException;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 9a7b2f635fc32b912057121f35ca6baaa7c3773a
 	/**
 	 * @author 신선영
 	 * 사용자가 선택한 선물에 해당하는 캐릭터 호감도 업데이트 (gift 테이블 참고, likeablility 테이블 업데이트)

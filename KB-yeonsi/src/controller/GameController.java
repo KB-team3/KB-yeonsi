@@ -82,7 +82,7 @@ public class GameController {
 
 	/**
 	 * @author 윤상우
-	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (gift 테이블)
+	 * 사용자가 선택한 food에 대한 캐릭터 호감도 업데이트 (food 테이블)
 	 * 모든 과정이 성공하면 successView, 실패하면 failView 출력
 	 * @param userName
 	 * @param selectCharacter
@@ -96,6 +96,10 @@ public class GameController {
 			FailView.errorMessage("실패 ㅠㅠ");
 		}
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 9a7b2f635fc32b912057121f35ca6baaa7c3773a
 	/**
 	 * @author 신선영
 	 * 사용자가 선택한 선물에 해당하는 캐릭터 호감도 업데이트 (gift 테이블)
