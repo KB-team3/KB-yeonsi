@@ -52,7 +52,7 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 			con.commit();
 		} catch(SQLException e) {
 			e.printStackTrace();
-			// throw new 
+			throw new SearchWrongException("아카데미 이벤트 조회 예외");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
@@ -61,6 +61,8 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 	
 	/**
 	 * 아카데미 이벤트 옵션 조회
+	 * @param:
+	 * @return :
 	 */
 	private List<AcademyOptionDTO> selectAcademyOption (Connection con, int eventId) throws SearchWrongException{
 		PreparedStatement ps = null;
@@ -91,7 +93,7 @@ public class AcademyEventDAOImpl implements AcademyEventDAO{
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-			// throw new 
+			throw new SearchWrongException("아카데미 옵션 조회 예외");
 		} finally {
 			DBManager.releaseConnection(null, ps, rs);
 		}

@@ -2,9 +2,8 @@ package dto;
 
 
 /**
- * 각 선물에 해당하는 캐릭터의 호감도 관리
- * @author sunyeong;
- *
+ * @author 신선영
+ * 각 캐릭터가 선물에 가지고 있는 호감도 관리 (양수, 음수로 현재 호감도에서 계산하여 업데이트한다)
  */
 public class GiftDTO {
 	private int giftCode;

@@ -1,5 +1,12 @@
 package dto;
 
+/**
+ * 
+ * @author 윤상우
+ * 호감도를 담는 객체 생성
+ * UserDTO와 userName을 공유한다.
+ *
+ */
 public class LikeDTO {
 	private String userName;
 	private int wooyeop;
@@ -56,7 +63,7 @@ public class LikeDTO {
 	
 	@Override
 	public String toString() {
-		return "LikeDTO [userName=" + userName + ", wooyeop=" + wooyeop + ", sangwoo=" + sangwoo + ", sunyeong="
-				+ sunyeong + ", minji=" + minji + ", chaelim=" + chaelim + "]";
+		return  "우엽 = " + wooyeop + "\n" + "상우 = " + sangwoo + "\n"+ "선영 = "
+				+ sunyeong + "\n" + "민지 = " + minji + "\n" + "채림 = " + chaelim;
 	}
 }

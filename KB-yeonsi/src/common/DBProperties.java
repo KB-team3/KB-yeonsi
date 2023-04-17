@@ -5,7 +5,7 @@ package common;
 public interface DBProperties {
   public static final String DRVIER_NAME="oracle.jdbc.driver.OracleDriver";
    String URL="jdbc:oracle:thin:@localhost:1521:XE";
-   String USER_ID="c##scott";
-   String USER_PASS="tiger";
+   String USER_ID="kb3";
+   String USER_PASS="kb3";
    
 }

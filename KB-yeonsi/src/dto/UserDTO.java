@@ -1,22 +1,26 @@
 package dto;
 
+/**
+ * 
+ * @author 윤상우
+ * 게임 사용자를 담는 객체
+ * 메소드별 필요한 생성자를 선언
+ */
 public class UserDTO {
 	private String userName;
 	private int date;
-	private int fagibility;
 	private LikeDTO likeability;
 	
 	public UserDTO() {}
 	public UserDTO(String userName) {
 		this.userName = userName;
 	}
-	public UserDTO(String userName, int date, int fagibility) {
+	public UserDTO(String userName, int date) {
 		this(userName);
 		this.date = date;
-		this.fagibility = fagibility;
 	}
-	public UserDTO(String userName, int date, int fagibility, LikeDTO likeability) {
-		this(userName, date, fagibility);
+	public UserDTO(String userName, int date, LikeDTO likeability) {
+		this(userName, date);
 		this.likeability = likeability;
 	}
 	public String getUserName() {
@@ -31,12 +35,6 @@ public class UserDTO {
 	public void setDate(int date) {
 		this.date = date;
 	}
-	public int getFagibility() {
-		return fagibility;
-	}
-	public void setFagibility(int fagibility) {
-		this.fagibility = fagibility;
-	}
 	public LikeDTO getLikeability() {
 		return likeability;
 	}
@@ -46,7 +44,7 @@ public class UserDTO {
 	
 	@Override
 	public String toString() {
-		return "UserDTO [userName=" + userName + ", date=" + date + ", fagibility=" + fagibility + ", likeability="
+		return "UserDTO [userName=" + userName + ", date=" + date  + ", likeability="
 				+ likeability + "]";
 	}
 }

@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.DBManager;
+import dto.AcademyEventDTO;
 import dto.AcademyOptionDTO;
 import dto.LikeDTO;
 import dto.UserDTO;
 import exception.DMLException;
 import exception.SearchWrongException;
+import view.MainApp;
 
 
 public class GameDAOImpl implements GameDAO{
-
-	public GameDAOImpl () {}
 
 	private static GameDAO instance = new GameDAOImpl();
 	
@@ -25,6 +25,8 @@ public class GameDAOImpl implements GameDAO{
 	public static GameDAO getInstance() {
 		return instance;
 	}
+	
+	@Override
 	public List<AcademyOptionDTO> optionSelectByEventId(int eventId) {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -50,9 +52,7 @@ public class GameDAOImpl implements GameDAO{
 		return list;
 	}
 	
-	/**
-	 * 함께 맛집에 가면 호감도가 올라가거나 내려가용 메뉴에 따라서
-	 */
+	
 	@Override
 	public int foodUpdate(String userName, String selectCharacter, int foodCode) throws DMLException {
 		Connection con = null;
@@ -66,8 +66,6 @@ public class GameDAOImpl implements GameDAO{
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, foodCode);
-			/**
-			 * kkk는 static userDTO의 user_name*/
 			ps.setString(2, userName);
 			result = ps.executeUpdate();
 			
@@ -110,7 +108,7 @@ public class GameDAOImpl implements GameDAO{
         try {
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1,  userName);
+            ps.setString(1,  MainApp.userName);
             result = ps.executeUpdate();
 
     } catch (Exception e) {
@@ -130,7 +128,7 @@ public class GameDAOImpl implements GameDAO{
         try {
             con = DBManager.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setString(1,  userName);
+            ps.setString(1, MainApp.userName);
             result = ps.executeUpdate();
 
     } catch (Exception e) {
@@ -149,7 +147,6 @@ public class GameDAOImpl implements GameDAO{
             + "from users u, likeability l "
             + "where u.user_name = l.user_name and u.user_name = ?";
 	    UserDTO user =  new UserDTO();
-	    System.out.println(sql);
 	    try {
 	        con = DBManager.getConnection();
 	        ps = con.prepareStatement(sql);
@@ -157,9 +154,9 @@ public class GameDAOImpl implements GameDAO{
 	        rs = ps.executeQuery();
 	        
 	        if(rs.next()) {
-	            user = new UserDTO(rs.getString(1), rs.getInt(2), rs.getInt(3));
-	            LikeDTO like = new LikeDTO(rs.getString(4), rs.getInt(5), rs.getInt(6),
-	                    rs.getInt(7), rs.getInt(8), rs.getInt(9));
+	            user = new UserDTO(rs.getString(1), rs.getInt(2));
+	            LikeDTO like = new LikeDTO(rs.getString(3), rs.getInt(4), rs.getInt(5),
+	                    rs.getInt(6), rs.getInt(7), rs.getInt(8));
 	            user.setLikeability(like);
 	        }
 	
@@ -170,6 +167,54 @@ public class GameDAOImpl implements GameDAO{
 	    }
 	    return user;
 }
+	
+	@Override
+    public int academyUpdate(AcademyOptionDTO dto) throws DMLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        String sql = "update likeability set " + dto.getCharacterName() + " = " + 
+                dto.getCharacterName() + "+" + dto.getLikePoint() +" where user_name = ?";
+        try {
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, MainApp.userName);
+            result = ps.executeUpdate();
 
+        }catch(SQLException e) {
+            throw new DMLException("선택이 잘못되었습니다.");
+        }finally {
+            DBManager.releaseConnection(con, ps);
+        }
+        return result;
+    }
+	
+	/**
+	 * 작성자: 이우엽
+	 * 
+	 */
+	@Override
+    public AcademyEventDTO academyEventSelectByRandom(int eventId) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int result = 0;
+        AcademyEventDTO dto = null;
+        String sql = "select * from academy_event where event_Id = ?";
+        try {
+            con = DBManager.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, eventId);
+            rs = ps.executeQuery();
+            if(rs.next()) {
+                dto = new AcademyEventDTO(rs.getInt(1), rs.getString(2));
+            }
+        } catch(SQLException e) {
+                throw new SearchWrongException("오류");
+        } finally {
+            DBManager.releaseConnection(con, ps, rs);
+        }
+        return dto;
+    }
 	
 }
